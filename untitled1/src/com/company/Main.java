@@ -3,10 +3,11 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	    Parse par = new Parse("main.txt");
-	    par.tire();
-	    par.upCase();
-	    par.deleteSpaces();
-	    Write wrtr = new Write("newba.txt", par.getText());
+	    Readable reader = new FileReader("main.txt");
+	    String text = reader.read();
+	    Parsable parser = new UppercaseParser(text);
+	    String result = parser.parse();
+	    Writeable writeable = new FileWriter("new.txt", result);
+	    writeable.write();
     }
 }
